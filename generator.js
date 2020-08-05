@@ -109,7 +109,15 @@ files.forEach((file) => {
   fileUtils.replaceInFile(file);
 });
 
+
 const pluginDir = path.resolve(__dirname, "plugin-name");
+
+// Copy the .env.example file.
+fs.copyFileSync(
+  path.resolve(pluginDir, ".env.example"),
+  path.resolve(pluginDir, ".env")
+);
+
 const newPluginFile = path.resolve(pluginDir, pluginSlug + ".php");
 // Rename the plugin main file
 fs.renameSync(
