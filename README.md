@@ -1,4 +1,4 @@
-# WordPress Lando Plugin Setup
+# WordPress Lando Plugin Boilerplate Generator 
 
 This is the boilerplate for a WordPress plugin development environment, including (and enforcing) WordPress Standards, PHP namespaces and a lando server setup that's ready to be used for testing and debugging.
 
