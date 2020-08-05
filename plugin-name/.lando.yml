@@ -1,0 +1,39 @@
+name: plugin-name
+recipe: wordpress
+services:
+  appserver:
+    webroot: wordpress
+    xdebug: true
+    config:
+      php: ./.lando/php.ini
+    overrides:
+      volumes:
+        - ./:/app/wordpress/wp-content/plugins/plugin-name
+        - /app/wordpress/wp-content/plugins/plugin-name/wordpress
+    depends_on:
+      - database
+    build_as_root:
+      - apt-get update -y && apt-get install -y subversion
+      - chmod +x /app/.lando/post_start.sh
+  phpmyadmin:
+    type: phpmyadmin:5.0
+    hosts:
+      - database
+events:
+  post-start:
+    - /app/.lando/post_start.sh
+env_file:
+  - .env
+tooling:
+  phpunitd:
+    service: appserver
+    cmd: php -d xdebug.remote_port=9000 vendor/bin/phpunit
+    description: Runs PHPUnit tests in debug mode
+  update-autoloader:
+    service: appserver
+    cmd: composer update-autoloader
+    description: Regenerates the autoloader script for the project.
+  test:
+    service: appserver
+    cmd: composer test
+    description: Runs the tests for the plugin.

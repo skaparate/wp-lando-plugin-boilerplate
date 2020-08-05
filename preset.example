@@ -1,0 +1,7 @@
+{
+    "display-name": "My amazing plugin",
+    "plugin-slug": "my-amazing-plugin",
+    "plugin-slug-prefix": "",
+    "plugin-text-domain": false,
+    "base-namespace": "Skaparate/My_Amazing_Plugin"
+}
