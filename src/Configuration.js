@@ -36,6 +36,8 @@ function parseConfiguration(json) {
     this.constantPrefix = "";
     this.baseNamespace = this.basePackage.replace(/\//g, "\\");
     this.autoloadNs = basePackage.replace(/\//g, "\\\\").toLowerCase();
+    this.projectDescription = json["project-description"];
+    this.pluginRepo = json["plugin-repo"];
 
     const splitPackage = this.basePackage.split("/");
 
@@ -48,7 +50,7 @@ function parseConfiguration(json) {
     this.composerName = this.composerName.replace(/_/g, "-").toLowerCase();
 
     if (json["plugin-text-domain"] === false) {
-      this.textDomain = "";
+      this.textDomain = undefined;
     } else if (_.isBlankOrEmpty(json["plugin-text-domain"])) {
       this.textDomain = this.pluginSlug;
     } else {

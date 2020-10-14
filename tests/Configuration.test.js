@@ -58,7 +58,7 @@ describe("Testing Return Values", () => {
     ];
   };
   const textDomain = [
-    fn("textDomain", "", "plugin-text-domain", false),
+    fn("textDomain", undefined, "plugin-text-domain", false),
     fn("textDomain", validJson["plugin-slug"], "plugin-text-domain", ""),
     fn(
       "textDomain",

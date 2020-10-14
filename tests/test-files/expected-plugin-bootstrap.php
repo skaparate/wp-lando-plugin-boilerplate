@@ -3,10 +3,10 @@
  * The plugin bootstrap file
  * 
  * @since   1.0.0
- * @package Base/Package
+ * @package Skaparate/My_Amazing_Plugin
  *
  * @wordpress-plugin
- * Plugin Name:       plugin-display-name
+ * Plugin Name:       My amazing plugin
  * Plugin URI:        plugin-uri
  * Description:       plugin-description
  * Version:           1.0.0
@@ -18,7 +18,7 @@
  * Domain Path:       /languages
  */
 
-namespace Base\Package;
+namespace Skaparate\My_Amazing_Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	die;
@@ -27,19 +27,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Defines the plugin base path.
  */
-define( 'PLUGIN_NAME', plugin_dir_path( __FILE__ ) );
+define( 'MY_AMAZING_PLUGIN', plugin_dir_path( __FILE__ ) );
 
 /**
  * Defines the plugin base URL.
  */
-define( 'PLUGIN_NAME_URL', plugins_url( '/', __FILE__ ) );
+define( 'MY_AMAZING_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
 
 /**
  * Executes the plugin.
  */
 function execute_plugin() {
-	require_once PLUGIN_NAME . '/src/autoload.php';
-	$main = \Base\Package\Main::get_instance();
+	require_once MY_AMAZING_PLUGIN . '/src/autoload.php';
+	$main = \Skaparate\My_Amazing_Plugin\Main::get_instance();
 	$main->run();
 
 	add_action( 'init', array( $main, 'on_init' ) );
@@ -48,4 +48,4 @@ function execute_plugin() {
 	add_action( 'admin_enqueue_scripts', array( $main, 'on_admin_enqueue_scripts' ) );
 }
 
-add_action( 'plugins_loaded', 'Base\Package\execute_plugin', 0 );
+add_action( 'plugins_loaded', 'Skaparate\My_Amazing_Plugin\execute_plugin', 0 );

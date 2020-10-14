@@ -11,69 +11,14 @@ if (!fs.existsSync(presetFilePath)) {
   process.exit(-1);
 }
 
-const {
-  displayName,
-  pluginSlug,
-  basePackage,
-  textDomain,
-  constantPrefix,
-  baseNamespace,
-  autoloadNs,
-  composerName,
-} = require("./src/Configuration")(presetFilePath);
+const preset = JSON.parse(fs.readFileSync(presetFilePath));
+const configuration = require("./src/Configuration")(preset);
+const { pluginSlug } = configuration;
 
-const Sar = require("./src/Search");
-const FileReplace = require("./src/FileReplace");
 const FileUtils = require("./src/FileUtils");
 const fileUtils = new FileUtils(__dirname + "/plugin-name");
 
-console.log("Base Namespace:", baseNamespace);
-console.log("Base Package:", basePackage);
-console.log("Constant Name:", constantPrefix);
-console.log("Text Domain:", textDomain);
-console.log("Autoload namespace:", autoloadNs);
-console.log("Composer.json:name:", composerName);
-
-const files = [
-  new FileReplace("uninstall.php", [
-    new Sar("Base/Package", basePackage),
-    new Sar("Base\\\\Package", baseNamespace),
-  ]),
-  new FileReplace("README.md", [
-    new Sar("plugin-display-name", displayName),
-    new Sar("plugin-description", preset["plugin-description"]),
-    new Sar("project-repository", preset["project-repo"]),
-    new Sar("plugin-name", pluginSlug),
-  ]),
-  new FileReplace("plugin-name.php", [
-    new Sar("Base/Package", basePackage),
-    new Sar("Base\\\\Package", baseNamespace),
-    new Sar("PLUGIN_NAME", constantPrefix),
-    new Sar("plugin-display-name", displayName),
-    new Sar("plugin-text-domain", textDomain),
-  ]),
-  new FileReplace(".phpcs.xml", [
-    new Sar("plugin-name", pluginSlug),
-    new Sar("plugin-text-domain", textDomain),
-  ]),
-  new FileReplace(".lando.yml", [new Sar("plugin-name", pluginSlug)]),
-  new FileReplace(".env.example", [new Sar("plugin-name", pluginSlug)]),
-  new FileReplace("tests/bootstrap.php", [new Sar("plugin-name", pluginSlug)]),
-  new FileReplace("src/class-main.php", [
-    new Sar("Base/Package", basePackage),
-    new Sar("Base\\\\Package", baseNamespace),
-    new Sar("PLUGIN_NAME", constantPrefix),
-    new Sar("plugin-name", pluginSlug),
-  ]),
-  new FileReplace("src/autoload.php", [
-    new Sar("base\\\\\\\\package", autoloadNs),
-  ]),
-  new FileReplace("src/utils/class-logger.php", [
-    new Sar("Base/Package", basePackage),
-    new Sar("Base\\\\Package", baseNamespace),
-  ]),
-  new FileReplace("composer.json", [new Sar("plugin/name", composerName)]),
-];
+const files = require("./FileReplacements")(configuration);
 
 files.forEach((file) => {
   fileUtils.replaceInFile(file);
