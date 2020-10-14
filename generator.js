@@ -1,61 +1,31 @@
-// Configures the project interactively
+// Configures the project
 const fs = require("fs");
 const path = require("path");
 const presetFilePath = path.resolve("./", "preset.json");
 
 if (!fs.existsSync(presetFilePath)) {
   console.error(
-    "Error: No preset found. Please, copy the preset.example file and fill it with your project information"
+    `Error: No preset found. Please, copy the preset.example
+    file and fill it with your project information`
   );
   process.exit(-1);
 }
 
-const preset = JSON.parse(fs.readFileSync(presetFilePath));
-const displayName = preset["display-name"];
-
-if (!displayName) {
-  console.error("Error: No plugin display name was set");
-  process.exit(-1);
-}
-
-const pluginSlug = preset["plugin-slug"];
-
-if (!pluginSlug) {
-  console.error("Error: No plugin slug provided");
-  process.exit(-1);
-}
-
-const basePackage = preset["base-namespace"];
-
-if (!basePackage) {
-  console.error("Error: No base namespace provided");
-  process.exit(-1);
-}
+const {
+  displayName,
+  pluginSlug,
+  basePackage,
+  textDomain,
+  constantPrefix,
+  baseNamespace,
+  autoloadNs,
+  composerName,
+} = require("./src/Configuration")(presetFilePath);
 
 const Sar = require("./src/Search");
 const FileReplace = require("./src/FileReplace");
 const FileUtils = require("./src/FileUtils");
 const fileUtils = new FileUtils(__dirname + "/plugin-name");
-const baseNamespace = basePackage.replace(/\//, "\\");
-const autoloadNs = basePackage.replace(/\//, "\\\\").toLowerCase();
-const composerName = basePackage.toLowerCase().replace(/-/g, "_");
-let textDomain;
-
-if (preset["plugin-text-domain"] === false) {
-  textDomain = "";
-} else if (!textDomain) {
-  textDomain = pluginSlug;
-} else {
-  textDomain = preset["plugin-text-domain"];
-}
-
-let constantPrefix = "";
-
-if (preset["plugin-slug-prefix"]) {
-  constantPrefix = preset["plugin-slug-prefix"] + "_";
-}
-
-constantPrefix += pluginSlug.toUpperCase().replace(/-/g, "_");
 
 console.log("Base Namespace:", baseNamespace);
 console.log("Base Package:", basePackage);
@@ -109,7 +79,6 @@ files.forEach((file) => {
   fileUtils.replaceInFile(file);
 });
 
-
 const pluginDir = path.resolve(__dirname, "plugin-name");
 
 // Copy the .env.example file.
@@ -120,10 +89,7 @@ fs.copyFileSync(
 
 const newPluginFile = path.resolve(pluginDir, pluginSlug + ".php");
 // Rename the plugin main file
-fs.renameSync(
-  path.resolve(pluginDir, "plugin-name.php"),
-  newPluginFile
-);
+fs.renameSync(path.resolve(pluginDir, "plugin-name.php"), newPluginFile);
 
 // Rename the plugin directory
 fs.renameSync(pluginDir, path.resolve(__dirname, pluginSlug));
