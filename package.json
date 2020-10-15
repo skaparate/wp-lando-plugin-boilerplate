@@ -4,10 +4,21 @@
   "description": "Boilerplate and generator for a WordPress plugin development environment",
   "main": "generator.js",
   "directories": {
-    "test": "test"
+    "test": "tests"
   },
   "scripts": {
-    "test": "jest"
+    "test": "run-s lint format \"jest --coverage\"",
+    "jest": "jest",
+    "lint": "eslint ./*.js src/ tests/",
+    "format": "run-s prettier",
+    "prettier": "prettier -w ./*.js src/ tests/",
+    "generate": "node generator.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test",
+      "pre-push": "yarn test"
+    }
   },
   "repository": {
     "type": "git",
@@ -29,10 +40,15 @@
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
     "jest": "^26.5.3",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.1.2"
   },
   "dependencies": {
     "lodash": "^4.17.20"
+  },
+  "engines": {
+    "node": ">= 12.x"
   }
 }
