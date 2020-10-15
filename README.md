@@ -1,6 +1,6 @@
 # WordPress Lando Plugin Boilerplate Generator
 
-![Tests](https://github.com/skaparate/wp-lando-plugin-boilerplate/workflows/Node.js%20CI/badge.svg?branch=master)[![Coverage](https://coveralls.io/repos/github/skaparate/wp-lando-plugin-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/skaparate/wp-lando-plugin-boilerplate?branch=master)
+![Tests](https://github.com/skaparate/wp-lando-plugin-boilerplate/workflows/Node.js%20CI/badge.svg?branch=master) [![Coverage](https://coveralls.io/repos/github/skaparate/wp-lando-plugin-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/skaparate/wp-lando-plugin-boilerplate?branch=master)
 
 This is the boilerplate for a WordPress plugin development environment, including (and enforcing) WordPress Standards, PHP namespaces and a lando server setup that's ready to be used for testing and debugging.
 
