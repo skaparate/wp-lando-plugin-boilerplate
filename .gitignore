@@ -115,4 +115,8 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/node
 
+# File used to build the plugin boilerplate
 preset.json
+
+# Coveralls configuration file
+.coveralls.yml
