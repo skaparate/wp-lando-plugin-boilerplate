@@ -32,6 +32,8 @@ This file is used to tell the generator about some project settings, specificall
 * plugin-slug-prefix (**Optional**): This is a prefix that's prepended to the plugin slug. If the plugin slug is `my-plugin` and this is set to `skp`, then the slug becomes `skp-my-plugin`.
 * plugin-text-domain (**Optional**): Used for i18n. It can be a string or false. If set to false, the plugin-text-domain is not removed from the files nor replaced. *When empty*, the text domain is derived from the plugin slug (not including the slug prefix).
 * base-namespace: The namespace and package used for the `@package` comment and the PHP `namespace`.
+* plugin-description: The description of what the plugin does.
+* plugin-repo: The URL of the repository or website for the plugin.
 
 ## Tests
 
