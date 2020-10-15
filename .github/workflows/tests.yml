@@ -3,14 +3,10 @@
 
 name: Tests
 
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+on: [push, pull_request]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -32,9 +28,9 @@ jobs:
         run: yarn run validate
 
       - name: Testing and Coverage
-        run: yarn run test:coverage && yarn run coveralls
+        run: yarn run test:coverage
 
       - name: Coveralls GitHub Action
         uses: coverallsapp/github-action@v1.1.2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
