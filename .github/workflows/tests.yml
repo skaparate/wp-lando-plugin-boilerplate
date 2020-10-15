@@ -23,12 +23,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Linting and Formatting
         run: yarn run validate
       - name: Testing and Coverage
-      - run: yarn run test:coverage && yarn run coveralls
+        run: yarn run test:coverage && yarn run coveralls
 
       - name: Coveralls GitHub Action
       - uses: coverallsapp/github-action@v1.1.2
