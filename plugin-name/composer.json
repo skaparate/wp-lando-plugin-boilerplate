@@ -1,6 +1,6 @@
 {
   "name": "plugin/name",
-  "description": "Plugin description",
+  "description": "plugin-description",
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "*",
     "wp-coding-standards/wpcs": "*",

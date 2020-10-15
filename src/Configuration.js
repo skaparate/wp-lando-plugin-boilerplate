@@ -36,7 +36,7 @@ function parseConfiguration(json) {
     this.constantPrefix = "";
     this.baseNamespace = this.basePackage.replace(/\//g, "\\");
     this.autoloadNs = basePackage.replace(/\//g, "\\\\").toLowerCase();
-    this.projectDescription = json["project-description"];
+    this.pluginDescription = json["plugin-description"];
     this.pluginRepo = json["plugin-repo"];
 
     const splitPackage = this.basePackage.split("/");

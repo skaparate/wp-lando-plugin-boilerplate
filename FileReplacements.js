@@ -28,6 +28,7 @@ module.exports = ({
     new Sar("plugin-display-name", displayName),
     new Sar("plugin-text-domain", textDomain),
     new Sar("plugin-description", pluginDescription),
+    new Sar("plugin-uri", pluginRepo),
   ]),
   new FileReplace(".phpcs.xml", [
     new Sar("plugin-name", pluginSlug),
@@ -49,5 +50,8 @@ module.exports = ({
     new Sar("Base/Package", basePackage),
     new Sar("Base\\\\Package", baseNamespace),
   ]),
-  new FileReplace("composer.json", [new Sar("plugin/name", composerName)]),
+  new FileReplace("composer.json", [
+    new Sar("plugin/name", composerName),
+    new Sar("plugin-description", pluginDescription),
+  ]),
 ];
