@@ -7,9 +7,11 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "run-s lint format -- jest",
+    "test": "run-s lint format \"jest --coverage\"",
+    "jest": "jest",
     "lint": "eslint ./*.js src/ tests/",
-    "format": "prettier -w ./*.js src/ tests/",
+    "format": "run-s prettier",
+    "prettier": "prettier -w ./*.js src/ tests/",
     "generate": "node generator.js"
   },
   "husky": {
@@ -45,5 +47,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.20"
+  },
+  "engines": {
+    "node": ">= 12.x"
   }
 }
