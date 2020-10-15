@@ -7,11 +7,13 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "run-s lint format \"jest --coverage\"",
-    "jest": "jest",
+    "test": "jest",
+    "test:coverage": "yarn test --coverage",
+    "coveralls": "coveralls < coverage/lcov.info",
     "lint": "eslint ./*.js src/ tests/",
     "format": "run-s prettier",
     "prettier": "prettier -w ./*.js src/ tests/",
+    "validate": "run-s lint format",
     "generate": "node generator.js"
   },
   "husky": {
@@ -36,6 +38,7 @@
   },
   "homepage": "https://github.com/skaparate/wp-lando-plugin-boilerplate#readme",
   "devDependencies": {
+    "coveralls": "^3.1.0",
     "eslint": "^7.11.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^6.12.0",
