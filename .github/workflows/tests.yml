@@ -18,7 +18,8 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Cloning
+        uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -26,12 +27,14 @@ jobs:
 
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
+
       - name: Linting and Formatting
         run: yarn run validate
+
       - name: Testing and Coverage
         run: yarn run test:coverage && yarn run coveralls
 
       - name: Coveralls GitHub Action
-      - uses: coverallsapp/github-action@v1.1.2
+        uses: coverallsapp/github-action@v1.1.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}"
