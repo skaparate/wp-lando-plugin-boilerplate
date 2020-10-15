@@ -9,7 +9,6 @@
   "scripts": {
     "test": "jest",
     "test:coverage": "yarn test --coverage",
-    "coveralls": "shx cat coverage/lcov.info | coveralls --verbose",
     "lint": "eslint ./*.js src/ tests/",
     "format": "run-s prettier",
     "prettier": "prettier -w ./*.js src/ tests/",
@@ -38,7 +37,6 @@
   },
   "homepage": "https://github.com/skaparate/wp-lando-plugin-boilerplate#readme",
   "devDependencies": {
-    "coveralls": "^3.1.0",
     "eslint": "^7.11.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^6.12.0",

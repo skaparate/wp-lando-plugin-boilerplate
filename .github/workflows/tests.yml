@@ -28,7 +28,7 @@ jobs:
         run: yarn run validate
 
       - name: Testing and Coverage
-        run: yarn run test:coverage && yarn run coveralls
+        run: yarn run test:coverage
 
       - name: Coveralls GitHub Action
         uses: coverallsapp/github-action@v1.1.2
