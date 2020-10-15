@@ -6,7 +6,11 @@ The project is intended to be used with WordPress 5+, PHP 7+ and at least lando 
 
 It's also expected to be used along with VSCode. I haven't tested any other editors.
 
-## How to Use
+## What Does the Generator Do?
+
+It modifies the contents under [plugin-name](/plugin-name) using the [preset.json](/preset.example), ultimately renaming the folder to the `plugin-slug` set in the `preset.json` file.
+
+### How to Use the Generator
 
 To use this generator, you need to have `node` installed (use nvm). I tested this with version 12.16.3 of node, but I suppose it should work with at least version 6 onwards:
 
@@ -26,6 +30,10 @@ This file is used to tell the generator about some project settings, specificall
 * plugin-slug-prefix (**Optional**): This is a prefix that's prepended to the plugin slug. If the plugin slug is `my-plugin` and this is set to `skp`, then the slug becomes `skp-my-plugin`.
 * plugin-text-domain (**Optional**): Used for i18n. It can be a string or false. If set to false, the plugin-text-domain is not removed from the files nor replaced. *When empty*, the text domain is derived from the plugin slug (not including the slug prefix).
 * base-namespace: The namespace and package used for the `@package` comment and the PHP `namespace`.
+
+## Tests
+
+To run the tests, simply run `yarn run test`.
 
 ## That's it
 

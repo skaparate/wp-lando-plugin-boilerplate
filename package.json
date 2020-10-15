@@ -1,0 +1,38 @@
+{
+  "name": "wp-lando-plugin-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate and generator for a WordPress plugin development environment",
+  "main": "generator.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skaparate/wp-lando-plugin-boilerplate.git"
+  },
+  "keywords": [
+    "wordpress",
+    "lando",
+    "devops"
+  ],
+  "author": "Nicolas Mancilla",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/skaparate/wp-lando-plugin-boilerplate/issues"
+  },
+  "homepage": "https://github.com/skaparate/wp-lando-plugin-boilerplate#readme",
+  "devDependencies": {
+    "eslint": "^7.11.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.5.3",
+    "prettier": "^2.1.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.20"
+  }
+}
