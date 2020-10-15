@@ -29,8 +29,8 @@ jobs:
     - name: Linting and Formatting
       run: yarn run validate
     - name: Testing and Coverage
-      run: yarn run test:coverage
-      run: yarn run coveralls
+    - run: yarn run test:coverage
+    - run: yarn run coveralls
     
     - name: Coveralls GitHub Action
     - uses: coverallsapp/github-action@v1.1.2
