@@ -1,6 +1,6 @@
 # WordPress Lando Plugin Boilerplate Generator
 
-![Tests](https://github.com/skaparate/wp-lando-plugin-boilerplate/workflows/Node.js%20CI/badge.svg?branch=master)
+![Tests](https://github.com/skaparate/wp-lando-plugin-boilerplate/workflows/Tests/badge.svg)
 
 This is the boilerplate for a WordPress plugin development environment, including (and enforcing) WordPress Standards, PHP namespaces and a lando server setup that's ready to be used for testing and debugging.
 
