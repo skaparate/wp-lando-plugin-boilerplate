@@ -8,6 +8,8 @@
 
 namespace Base\Package;
 
+use Base\Package\Utils\UI;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
@@ -81,8 +83,7 @@ class Main {
 	 * Begins the plugin execution
 	 */
 	public function run() {
-		if ( false === $this->is_php_version_requirement_met() ) {
-			add_action( 'admin_notices', array( $this, 'admin_notice_minimum_php_version' ) );
+		if ( false === $this->check_php_version() ) {
 			return;
 		}
 		
@@ -137,13 +138,6 @@ class Main {
 	}
 
 	/**
-	 * Check if the PHP version is equal or higher than the required by the plugin.
-	 */
-	private function is_php_version_requirement_met() {
-		return version_compare( PHP_VERSION, self::MIN_PHP_VERSION, '>=' );
-	}
-
-	/**
 	 * Register controllers.
 	 */
 	private function register_controllers() {
@@ -174,19 +168,28 @@ class Main {
 	 */
 	private function register_common_scripts() {
 	}
+	
+	/**
+	 * Check if the PHP version is equal or higher than the required by the plugin.
+	 */
+	private function check_php_version() {
+		if ( version_compare( PHP_VERSION, self::MIN_PHP_VERSION, '>=' ) ) {
+			return true;
+		}
 
+		add_action( 'admin_notice', array( $this, 'admin_notice_minimum_php_version' ) );
+		return false;
+	}
+	
+	/**
+	 * Displays minimum PHP notice.
+	 */
 	public function admin_notice_minimum_php_version() {
-		?>
-		<div class="notice notice-error is-dismissible">
-			<p><?php echo sprintf(
-				__(
-					/** translators: %s is the PHP version */
-					'This plugin requires a minimum PHP version of %s',
-					'textdomain'
-				),
-				self::MIN_PHP_VERSION
-			); ?></p>
-		</div>
-		<?php
+		/* translators: '%s' is the PHP version */
+		$format = __(
+			'This plugin requires a minimum PHP version of %s',
+			'textdomain'
+		);
+		UI::error_notice( sprintf( $format, self::MIN_PHP_VERSION ) );
 	}
 }
