@@ -17,11 +17,13 @@
       "php tools/phpab.phar -o src/autoload.php src/"
     ],
     "test": "vendor/bin/phpunit",
-    "update-autoloader": "php tools/phpab.phar -o src/autoload.php src/"
+    "update-autoloader": "php tools/phpab.phar -o src/autoload.php src/",
+    "cleanup": "rm -r wordpress/ test-lib/ vendor/ tools/"
   },
   "scripts-descriptions": {
     "test": "Run the project tests",
-    "update-autoloader": "Updates the project autoloading function"
+    "update-autoloader": "Updates the project autoloading function",
+    "cleanup": "Removes the downloaded files and folders: wordpress/ vendor/ test-lib/ tools/"
   },
   "require": {
   }
