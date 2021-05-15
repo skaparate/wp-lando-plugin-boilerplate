@@ -13,7 +13,7 @@
   "scripts": {
     "post-install-cmd": [
       "mkdir tools",
-      "curl -Lo tools/phpab.phar https://github.com/theseer/Autoload/releases/download/1.25.9/phpab-1.25.9.phar",
+      "curl -Lo tools/phpab.phar https://github.com/theseer/Autoload/releases/download/1.26.0/phpab-1.26.0.phar",
       "php tools/phpab.phar -o src/autoload.php src/"
     ],
     "test": "vendor/bin/phpunit",
