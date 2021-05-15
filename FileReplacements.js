@@ -49,5 +49,9 @@ module.exports = ({
     new Sar("Base/Package", basePackage),
     new Sar("Base\\\\Package", baseNamespace),
   ]),
+  new FileReplace("src/utils/class-ui.php", [
+    new Sar("Base/Package", basePackage),
+    new Sar("Base\\\\Package", baseNamespace),
+  ]),
   new FileReplace("composer.json", [new Sar("plugin/name", composerName)]),
 ];
