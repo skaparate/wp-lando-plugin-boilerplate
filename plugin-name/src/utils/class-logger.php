@@ -7,6 +7,10 @@
 
 namespace Base\Package\Utils;
 
+if (! defined('ABSPATH')) {
+    die;
+}
+
 /**
  * Utility class to log messages for debugging.
  */

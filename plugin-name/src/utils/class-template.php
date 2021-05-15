@@ -8,6 +8,10 @@
 
 namespace Base\Package\Utils;
 
+if (! defined('ABSPATH')) {
+    die;
+}
+
 /**
  * Class in charge of finding and manipulating templates.
  */
