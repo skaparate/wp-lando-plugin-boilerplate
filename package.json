@@ -11,7 +11,7 @@
     "test:coverage": "yarn test --coverage",
     "lint": "eslint ./*.js src/ tests/",
     "format": "run-s prettier",
-    "prettier": "prettier -w ./*.js src/ tests/",
+    "prettier": "prettier -w generator.js src/**/*.js tests/**/*.js",
     "validate": "run-s lint format",
     "generate": "node generator.js"
   },
