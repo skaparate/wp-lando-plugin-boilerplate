@@ -54,10 +54,10 @@ install_test_libs() {
     if [ ! -f "$WP_TEST_LIBS_DIR"/wp-tests-config.php ]; then
         curl -o "$WP_TEST_LIBS_DIR"/wp-tests-config.php $WPSVNURL/wp-tests-config-sample.php
         sed -i.bak "s:dirname( __FILE__ ) . '/src/':'$WP_TEST_INSTALL':" "$WP_TEST_LIBS_DIR"/wp-tests-config.php
-        sed -i.bak "s/youremptytestdbnamehere/$DB_NAME/" "$WP_TEST_LIBS_DIR"/wp-tests-config.php
-        sed -i.bak "s/yourusernamehere/$DB_USER/" "$WP_TEST_LIBS_DIR"/wp-tests-config.php
-        sed -i.bak "s/yourpasswordhere/$DB_PASS/" "$WP_TEST_LIBS_DIR"/wp-tests-config.php
-        sed -i.bak "s|localhost|${DB_HOST}|" "$WP_TEST_LIBS_DIR"/wp-tests-config.php
+        sed -i.bak "s/youremptytestdbnamehere/$DB_NAME_TEST/" "$WP_TEST_LIBS_DIR"/wp-tests-config.php
+        sed -i.bak "s/yourusernamehere/$DB_USER_TEST/" "$WP_TEST_LIBS_DIR"/wp-tests-config.php
+        sed -i.bak "s/yourpasswordhere/$DB_PASS_TEST/" "$WP_TEST_LIBS_DIR"/wp-tests-config.php
+        sed -i.bak "s|localhost|${DB_HOST_TEST}|" "$WP_TEST_LIBS_DIR"/wp-tests-config.php
     fi
 }
 
