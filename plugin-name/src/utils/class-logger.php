@@ -21,7 +21,7 @@ class Logger {
 	 * @param String $msg The message.
 	 */
 	public static function log( $msg, $is_error = false ) {
-        if ( $is_error || ( defined( WP_DEBUG ) && WP_DEBUG === true ) ) {
+        if ( $is_error || ( defined( 'WP_DEBUG' ) && WP_DEBUG === true ) ) {
             error_log( $msg );
         }
 	}
