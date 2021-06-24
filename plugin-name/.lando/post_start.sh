@@ -22,7 +22,7 @@ install_wordpress() {
         wp core download --version=$WP_VERSION --path="$_WPDIR" --force
         wp config create --path="$_WPDIR" --dbname=$DB_NAME --dbuser=$DB_USER --dbpass="$DB_PASS" --dbhost="$DB_HOST"
         wp config set WP_DEBUG true --raw --path="$_WPDIR"
-        wp config set WP_DEBU_LOG true --raw --path="$_WPDIR"
+        wp config set WP_DEBUG_LOG true --raw --path="$_WPDIR"
     fi
 
     if [ ! $(wp core is-installed --path="$_WPDIR") ]; then
